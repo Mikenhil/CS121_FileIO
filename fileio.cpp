@@ -19,29 +19,24 @@ void readFile() {
 	std::string word;
 
 	if(file.is_open()) {
-		bool keepGoing = true;
-		while(keepGoing) {
-			getline(file, line);
-
+		while(getline(file, line)) {
 			ss.clear();
 			ss.str("");
 			converter.clear();
 			converter.str("");
+
+			num1 = 0;
+			num2 = 0;
+			word = "";
 
 			ss.str(line);
 			getline(ss, sNum1, ',');
 			getline(ss, sNum2, ',');
 			getline(ss, word);
 
-
-			//std::cout << sNum1 << " +  " << sNum2 << " "  << word  << std::endl;
-
-			num1 = 0;
-			num2 = 0;
-
 			converter << sNum1;
 			converter >> num1;
-
+			
 			converter.clear();
 			converter.str("");
 
@@ -53,11 +48,6 @@ void readFile() {
 				std::cout << word << " ";
 			}
 			std::cout << "" << std::endl;
-			//std::cout << num1 << " and " << num2  << " " << word << std::endl;
-
-			if(file.eof()) {
-				keepGoing = false;
-			}
 		}
 		file.close();
 	} 
@@ -68,5 +58,6 @@ void readFile() {
 
 int main() {
 	readFile();
+
 	return 0;
 }
